@@ -83,7 +83,7 @@ export default function Home() {
             </div>
           </div>
           <div style={{ position: 'relative' }} className="hero-img-anim">
-            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=700&h=780&fit=crop&crop=face" alt={DOCTOR.name} style={{ borderRadius: 24, width: '100%', maxHeight: '75vh', objectFit: 'cover', boxShadow: '0 25px 60px rgba(8,145,178,.15)' }} />
+            <img src="/images/doc1.png" alt={DOCTOR.name} style={{ borderRadius: 24, width: '100%', maxHeight: '75vh', objectFit: 'cover', objectPosition: 'top center', boxShadow: '0 25px 60px rgba(8,145,178,.15)' }} />
             <div className="hero-float" style={{ position: 'absolute', top: '8%', right: -10, background: '#fff', borderRadius: 14, padding: '.75rem 1.1rem', boxShadow: '0 8px 30px rgba(0,0,0,.07)', display: 'flex', alignItems: 'center', gap: '.6rem', animation: 'floatY 3s ease-in-out infinite' }}>
               <Award size={20} style={{ color: 'var(--color-accent)' }} /><div><strong style={{ fontSize: '.95rem' }}>15,000+</strong><div style={{ fontSize: '.72rem', color: 'var(--color-g400)' }}>Happy Patients</div></div>
             </div>
@@ -118,72 +118,177 @@ export default function Home() {
         <style>{`@media(max-width:768px){.stat-grid{grid-template-columns:repeat(2,1fr)!important}}`}</style>
       </section>
 
-      {/* ═══ WHY CHOOSE US ═══ */}
-      <section style={{ padding: '4.5rem 0 3.5rem' }}>
+      {/* ═══ WHY CHOOSE US — MODERN SPLIT ═══ */}
+      <section style={{ padding: '5.5rem 0', overflow: 'hidden' }}>
         <div className="container">
-          <div className="rv" style={{ textAlign: 'center' }}>
-            <span className="section-badge"><Zap size={13} /> Why Choose Us</span>
-            <h2 className="section-title">Why Patients Trust Us</h2>
-            <p className="section-sub">Medical expertise with genuine compassion</p>
-          </div>
-          <div className="sg wcu-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '1rem' }}>
-            {[
-              { icon: HeartPulse, title: 'Expert Doctors', desc: 'Board-certified specialists with years of clinical experience.' },
-              { icon: Activity, title: 'Modern Equipment', desc: 'State-of-the-art diagnostic and treatment equipment.' },
-              { icon: Clock, title: 'Quick Response', desc: 'Minimal wait times with efficient scheduling.' },
-              { icon: Shield, title: 'Safe & Hygienic', desc: 'Strict infection control protocols for safety.' },
-              { icon: Users, title: 'Friendly Staff', desc: 'Warm team dedicated to your comfort.' },
-              { icon: Award, title: 'Award Winning', desc: 'Recognized for excellence in patient care.' },
-            ].map((item, i) => (
-              <div key={i} className="card-alt">
-                <div style={{ width: 38, height: 38, borderRadius: 10, background: 'var(--color-primary-50)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '.7rem' }}>
-                  <item.icon size={18} style={{ color: 'var(--color-primary)' }} />
-                </div>
-                <h3 style={{ fontSize: '.95rem', marginBottom: '.25rem' }}>{item.title}</h3>
-                <p style={{ fontSize: '.82rem', color: 'var(--color-g500)', lineHeight: 1.55 }}>{item.desc}</p>
+          <div className="wcu-split" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '5rem', alignItems: 'center' }}>
+            
+            {/* Left Content */}
+            <div className="rv">
+              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', color: 'var(--color-dark)', marginBottom: '2rem', lineHeight: 1.15 }}>
+                Why Patients Trust Us
+              </h2>
+              <div className="sg" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.2rem' }}>
+                {[
+                  { icon: HeartPulse, title: 'Expert Doctors', desc: 'Board-certified specialists with years of clinical experience.' },
+                  { icon: Shield, title: 'International Accreditation', desc: 'Strict infection control and globally recognized safety protocols.' },
+                  { icon: Activity, title: 'Modern Equipment', desc: 'State-of-the-art diagnostic and treatment equipment.' },
+                  { icon: Award, title: 'Award Winning Care', desc: 'Consistently recognized for excellence in patient satisfaction.' },
+                ].map((item, i) => (
+                  <div key={i} className="wcu-card" style={{ background: 'var(--color-primary-50)', padding: '1.6rem', borderRadius: '18px', transition: 'all 0.3s ease', cursor: 'default' }}>
+                    <item.icon size={30} style={{ color: 'var(--color-primary)', marginBottom: '1.2rem' }} strokeWidth={1.8} />
+                    <h3 style={{ fontSize: '.95rem', fontWeight: 700, color: 'var(--color-dark-2)', marginBottom: '.5rem', fontFamily: 'var(--font-heading)', letterSpacing: '.01em' }}>{item.title}</h3>
+                    <p style={{ fontSize: '.8rem', color: 'var(--color-g600)', lineHeight: 1.65 }}>{item.desc}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Right Images Composition */}
+            <div className="rv wcu-images-wrap" style={{ position: 'relative', height: '100%', minHeight: '520px' }}>
+              
+              {/* Top/Back Image */}
+              <div style={{ position: 'absolute', top: 0, right: '0%', width: '68%', height: '62%', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.08)' }}>
+                <img src="/images/doc4.png" alt="Doctors Consult" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} />
+              </div>
+              
+              {/* Bottom/Front Image */}
+              <div style={{ position: 'absolute', bottom: '2%', left: '0%', width: '68%', height: '60%', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.12)', border: '8px solid #fff' }}>
+                <img src="/images/doc6.png" alt="Medical Team" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} />
+              </div>
+
+              {/* Floating Badge 1 - Top Right (Desktop) / Top Left (Mobile) */}
+              <div className="wcu-badge-1" style={{ position: 'absolute', background: '#fff', borderRadius: '18px', boxShadow: '0 12px 35px rgba(0,0,0,0.08)', display: 'flex', alignItems: 'center', gap: '.8rem', animation: 'floatY 4s ease-in-out infinite', zIndex: 5 }}>
+                <div className="wcu-badge-icon" style={{ borderRadius: '50%', background: 'var(--color-primary-50)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Award className="wcu-icon-svg" style={{ color: 'var(--color-primary)' }} />
+                </div>
+                <div>
+                  <div className="wcu-badge-num" style={{ fontWeight: 800, color: 'var(--color-primary)' }}>25+</div>
+                  <div className="wcu-badge-text" style={{ color: 'var(--color-g500)', fontWeight: 600 }}>Years of Excellence</div>
+                </div>
+              </div>
+
+              {/* Floating Badge 2 - Bottom Center (Desktop) / Bottom Right (Mobile) */}
+              <div className="wcu-badge-2" style={{ position: 'absolute', background: '#fff', borderRadius: '18px', boxShadow: '0 12px 35px rgba(0,0,0,0.1)', display: 'flex', alignItems: 'center', gap: '.8rem', animation: 'floatY 5s ease-in-out infinite 1s', zIndex: 10 }}>
+                <div style={{ display: 'flex', marginLeft: '.4rem' }}>
+                  <img src="/images/doc2.png" alt="Patient" className="wcu-badge-img" style={{ borderRadius: '50%', border: '2px solid #fff', marginLeft: '-.5rem', objectFit: 'cover', objectPosition: 'top center' }} />
+                  <img src="/images/doc5.png" alt="Patient" className="wcu-badge-img" style={{ borderRadius: '50%', border: '2px solid #fff', marginLeft: '-.5rem', objectFit: 'cover', objectPosition: 'top center' }} />
+                  <img src="/images/doc3.png" alt="Patient" className="wcu-badge-img" style={{ borderRadius: '50%', border: '2px solid #fff', marginLeft: '-.5rem', objectFit: 'cover', objectPosition: 'top center' }} />
+                </div>
+                <div>
+                  <div className="wcu-badge-num" style={{ fontWeight: 800, color: 'var(--color-primary)' }}>20k+</div>
+                  <div className="wcu-badge-text" style={{ color: 'var(--color-g500)', fontWeight: 600 }}>Happy Clients</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <style>{`@media(max-width:768px){.wcu-grid{grid-template-columns:1fr 1fr!important}} @media(max-width:480px){.wcu-grid{grid-template-columns:1fr!important}}`}</style>
+          <style>{`
+            .wcu-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(8, 145, 178, 0.12); }
+            
+            /* Desktop Badge Styles */
+            .wcu-badge-1 { top: 5%; left: -5%; padding: 1rem 1.4rem; z-index: 10; }
+            .wcu-badge-2 { bottom: 5%; right: -5%; padding: .8rem 1.2rem; }
+            .wcu-badge-icon { width: 42px; height: 42px; }
+            .wcu-icon-svg { width: 20px; height: 20px; }
+            .wcu-badge-num { font-size: 1.2rem; }
+            .wcu-badge-text { font-size: .72rem; }
+            .wcu-badge-img { width: 34px; height: 34px; }
+
+            @media(max-width: 1024px) {
+              .wcu-split { grid-template-columns: 1fr !important; gap: 4rem !important; }
+              .wcu-images-wrap { min-height: 450px !important; max-width: 600px; margin: 0 auto; width: 100%; }
+              /* At tablet size, stop using negative right values so it doesn't overflow */
+              .wcu-badge-1 { top: -2%; right: auto; left: 0%; z-index: 10; }
+              .wcu-badge-2 { bottom: 2%; right: 5%; }
+            }
+            @media(max-width: 768px) {
+              .wcu-badge-1 { padding: .6rem .8rem; top: -5%; left: 0%; }
+              .wcu-badge-2 { padding: .5rem .8rem; bottom: 0%; right: 0%; }
+              .wcu-badge-icon { width: 34px; height: 34px; }
+              .wcu-icon-svg { width: 16px; height: 16px; }
+              .wcu-badge-num { font-size: 1rem; }
+              .wcu-badge-text { font-size: .65rem; }
+              .wcu-badge-img { width: 28px; height: 28px; }
+            }
+            @media(max-width: 576px) {
+              .wcu-split > div:first-child > .sg { grid-template-columns: 1fr !important; }
+              .wcu-images-wrap { min-height: 400px !important; }
+            }
+          `}</style>
         </div>
       </section>
 
-      {/* ═══ SERVICES — DETAILED ═══ */}
-      <section style={{ padding: '3.5rem 0', background: 'var(--color-g50)' }}>
-        <div className="container">
-          <div className="rv" style={{ textAlign: 'center' }}>
-            <span className="section-badge"><Stethoscope size={13} /> Our Services</span>
-            <h2 className="section-title">Our Specializations</h2>
-            <p className="section-sub">Comprehensive healthcare under one roof with expert care</p>
+
+
+      {/* ═══ OUR SPECIALIZATIONS — STATIC ZIG-ZAG ═══ */}
+      <section style={{ padding: '4rem 0 7rem 0', background: 'var(--color-g50)', overflow: 'hidden' }}>
+        <div className="container" style={{ maxWidth: '1150px' }}>
+          <div className="rv" style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <span className="section-badge" style={{ background: '#fff', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>
+              <Stethoscope size={14} style={{ color: 'var(--color-primary)' }} /> Departments
+            </span>
+            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', color: 'var(--color-dark)', margin: '1rem 0' }}>
+              Centers of Excellence
+            </h2>
+            <p style={{ color: 'var(--color-g500)', maxWidth: '650px', margin: '0 auto', fontSize: '1.05rem', lineHeight: 1.6 }}>
+              We bring together world-class specialists and cutting-edge technology to provide unparalleled medical care across these key departments.
+            </p>
           </div>
-          {SERVICES.map((s, i) => {
-            const Icon = ICON_MAP[s.icon] || Stethoscope;
-            const isReversed = i % 2 !== 0;
-            return (
-              <div key={i} className="rv svc-detail" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem', alignItems: 'stretch', marginBottom: '3rem', direction: isReversed ? 'rtl' : 'ltr' }}>
-                <div style={{ direction: 'ltr' }}>
-                  <div style={{ width: 42, height: 42, borderRadius: 12, background: 'var(--color-primary-50)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '.8rem' }}>
-                    <Icon size={20} style={{ color: 'var(--color-primary)' }} />
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8rem' }}>
+            {[
+              { id: '01', icon: HeartPulse, title: 'Cardiology', desc: 'Advanced heart care, comprehensive diagnostics, and state-of-the-art cardiovascular surgical treatments delivered by top-tier specialists.', img: 'https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=800&h=600&fit=crop' },
+              { id: '02', icon: Brain, title: 'Neurology', desc: 'Specialized care for brain, spine, and nervous system disorders. We utilize cutting-edge technology for both diagnosis and recovery.', img: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop' },
+              { id: '03', icon: Bone, title: 'Orthopedics', desc: 'Expert surgical and non-surgical treatments for bones, joints, and sports injuries to help you regain full mobility and strength.', img: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&h=600&fit=crop' },
+              { id: '04', icon: Baby, title: 'Pediatrics', desc: 'Gentle, specialized, and compassionate healthcare tailored specifically for the unique needs of infants, children, and adolescents.', img: 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&h=600&fit=crop' },
+            ].map((s, i) => {
+              const isEven = i % 2 === 1;
+              return (
+                <div key={i} className={`svc-zz-row ${isEven ? 'row-reverse' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '5rem' }}>
+                  
+                  {/* Image Side */}
+                  <div className="svc-zz-img-wrap" style={{ flex: '1', position: 'relative' }}>
+                    <div style={{ position: 'absolute', inset: '-1.5rem', background: 'var(--color-primary-50)', borderRadius: '40px', transform: isEven ? 'rotate(3deg)' : 'rotate(-3deg)', zIndex: 0 }} />
+                    <div style={{ position: 'relative', zIndex: 1, borderRadius: '30px', overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.1)', height: '420px', background: '#fff' }}>
+                      <img src={s.img} alt={s.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
                   </div>
-                  <h3 style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)', marginBottom: '.4rem' }}>{s.title}</h3>
-                  <p style={{ color: 'var(--color-g500)', lineHeight: 1.7, marginBottom: '.8rem', fontSize: '.88rem' }}>{s.full}</p>
-                  <ul style={{ listStyle: 'none', padding: 0, marginBottom: '1rem' }}>
-                    {s.features.map((f, j) => (
-                      <li key={j} style={{ display: 'flex', alignItems: 'center', gap: '.4rem', padding: '.2rem 0', color: 'var(--color-g600)', fontSize: '.84rem' }}>
-                        <CheckCircle size={14} style={{ color: 'var(--color-success)', flexShrink: 0 }} /> {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link to="/book-appointment" className="btn btn-primary" style={{ fontSize: '.82rem', padding: '.6rem 1.3rem' }}>Book Consultation <ArrowRight size={14} /></Link>
+
+                  {/* Text Side */}
+                  <div className="svc-zz-text-wrap" style={{ flex: '1' }}>
+                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem', background: '#fff', padding: '0.5rem 1.2rem 0.5rem 0.5rem', borderRadius: '50px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>
+                       <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--color-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
+                          <s.icon size={20} />
+                       </div>
+                       <span style={{ fontWeight: 700, color: 'var(--color-primary)', letterSpacing: '1px' }}>DEPARTMENT {s.id}</span>
+                    </div>
+                    
+                    <h3 style={{ fontSize: '2.8rem', fontFamily: 'var(--font-heading)', color: 'var(--color-dark)', marginBottom: '1.2rem', lineHeight: 1.1 }}>{s.title}</h3>
+                    <p style={{ color: 'var(--color-g600)', fontSize: '1.1rem', lineHeight: 1.7, marginBottom: '2.5rem' }}>{s.desc}</p>
+                    
+                    <Link to="/book-appointment" className="btn btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '1rem', borderRadius: '50px', display: 'inline-flex', alignItems: 'center', gap: '0.8rem', boxShadow: '0 10px 25px rgba(8, 145, 178, 0.3)' }}>
+                      Book Appointment <ArrowRight size={18} />
+                    </Link>
+                  </div>
+                  
                 </div>
-                <div style={{ direction: 'ltr', borderRadius: 16, overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,.06)' }}>
-                  <img src={SVC_IMAGES[i] || SVC_IMAGES[0]} alt={s.title} style={{ width: '100%', height: '100%', minHeight: 240, objectFit: 'cover', display: 'block' }} />
-                </div>
-              </div>
-            );
-          })}
+              )
+            })}
+          </div>
+
+          <style>{`
+            .svc-zz-row.row-reverse { flex-direction: row-reverse; }
+            
+            @media(max-width: 992px) {
+              .svc-zz-row { flex-direction: column !important; gap: 4rem !important; }
+              .svc-zz-img-wrap { width: 100% !important; max-width: 500px; margin: 0 auto; }
+              .svc-zz-text-wrap { width: 100% !important; text-align: center; display: flex; flex-direction: column; align-items: center; }
+            }
+            @media(max-width: 576px) {
+              .svc-zz-img-wrap > div:first-child { display: none; /* Hide rotated background on very small screens to save space */ }
+            }
+          `}</style>
         </div>
-        <style>{`@media(max-width:768px){.svc-detail{grid-template-columns:1fr!important;direction:ltr!important}}`}</style>
       </section>
 
       {/* ═══ ABOUT PREVIEW ═══ */}
