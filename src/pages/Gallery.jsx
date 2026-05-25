@@ -5,26 +5,26 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Camera, Play, X, ChevronLeft, ChevronRight, Maximize2, Images, Filter } from 'lucide-react';
 gsap.registerPlugin(ScrollTrigger);
 
-const CATS = ['All', 'Clinic', 'Rooms', 'Equipment', 'Reception', 'Lab'];
+const CATS = ['All', 'Clinic', 'Rooms', 'Equipment', 'Consultations'];
 
 const PHOTOS = [
-  { src: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=450&fit=crop', title: 'Main Reception', cat: 'Reception', span: 'big' },
-  { src: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=600&h=450&fit=crop', title: 'Consultation Room', cat: 'Rooms', span: '' },
-  { src: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&h=450&fit=crop', title: 'Modern Interior', cat: 'Clinic', span: '' },
-  { src: 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=600&h=450&fit=crop', title: 'Advanced Equipment', cat: 'Equipment', span: 'tall' },
-  { src: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&h=450&fit=crop', title: 'Patient Room', cat: 'Rooms', span: '' },
-  { src: 'https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&h=450&fit=crop', title: 'Dental Suite', cat: 'Rooms', span: '' },
-  { src: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=450&fit=crop', title: 'Lab Equipment', cat: 'Lab', span: 'big' },
-  { src: 'https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?w=600&h=450&fit=crop', title: 'ECG Machine', cat: 'Equipment', span: '' },
-  { src: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=450&fit=crop', title: 'Pharmacy Area', cat: 'Clinic', span: '' },
-  { src: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&h=450&fit=crop', title: 'Waiting Lounge', cat: 'Reception', span: 'tall' },
-  { src: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&h=450&fit=crop', title: 'Clinic Building', cat: 'Clinic', span: '' },
-  { src: 'https://images.unsplash.com/photo-1583912267550-d6c2f89bea37?w=600&h=450&fit=crop', title: 'Laboratory', cat: 'Lab', span: '' },
+  { src: '/images/clinic2.png', title: 'Main Reception', cat: 'Clinic' },
+  { src: '/images/clinic1.png', title: 'Doctor Consultation', cat: 'Consultations' },
+  { src: 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=600&h=600&fit=crop', title: 'Advanced MRI', cat: 'Equipment' },
+  { src: '/images/clinic3.png', title: 'Patient Care', cat: 'Consultations' },
+  { src: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&h=600&fit=crop', title: 'Patient Room', cat: 'Rooms' },
+  { src: '/images/clinic4.png', title: 'Waiting Lounge', cat: 'Clinic' },
+  { src: 'https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&h=600&fit=crop', title: 'Dental Suite', cat: 'Rooms' },
+  { src: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=600&fit=crop', title: 'Lab Equipment', cat: 'Equipment' },
+  { src: 'https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?w=600&h=600&fit=crop', title: 'Operation Theater', cat: 'Rooms' },
+  { src: 'https://images.unsplash.com/photo-1583912267550-d6c2f89bea37?w=600&h=600&fit=crop', title: 'Laboratory', cat: 'Equipment' },
+  { src: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&h=600&fit=crop', title: 'Clinic Building', cat: 'Clinic' },
+  { src: '/images/doc1.png', title: 'Senior Surgeon', cat: 'Consultations' },
 ];
 
 const VIDEOS = [
-  { thumb: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&h=300&fit=crop', title: 'Clinic Tour — Inside Our Facility', duration: '2:45' },
-  { thumb: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=500&h=300&fit=crop', title: 'Meet Our Medical Team', duration: '3:12' },
+  { thumb: '/images/clinic2.png', title: 'Clinic Tour — Inside Our Facility', duration: '2:45' },
+  { thumb: '/images/clinic1.png', title: 'Patient Testimonials', duration: '3:12' },
   { thumb: 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=500&h=300&fit=crop', title: 'Equipment Walkthrough', duration: '1:58' },
 ];
 
@@ -112,7 +112,7 @@ export default function Gallery() {
         <div className="container">
           {/* Filter Tabs */}
           <div className="g-rv" style={{ display: 'flex', gap: '.4rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2rem' }}>
-            <div style={{ display: 'inline-flex', background: 'var(--color-g100)', borderRadius: 12, padding: '.3rem', gap: '.2rem' }}>
+            <div style={{ display: 'inline-flex', flexWrap: 'wrap', justifyContent: 'center', background: 'var(--color-g100)', borderRadius: 12, padding: '.3rem', gap: '.2rem', maxWidth: '100%' }}>
               {CATS.map(cat => (
                 <button key={cat} onClick={() => setActiveCat(cat)}
                   style={{
@@ -131,10 +131,9 @@ export default function Gallery() {
           {/* Bento Grid */}
           <div ref={gridRef} className="bento-grid">
             {filtered.map((photo, i) => {
-              const spanClass = photo.span === 'big' ? 'bento-big' : photo.span === 'tall' ? 'bento-tall' : '';
               return (
                 <div key={`${activeCat}-${i}`}
-                  className={`g-item ${spanClass}`}
+                  className="g-item"
                   onClick={() => setLightbox(i)}
                   onMouseMove={handleMouseMove}
                   onMouseLeave={handleMouseLeave}
@@ -214,13 +213,10 @@ export default function Gallery() {
 
       {/* ═══ GALLERY STYLES ═══ */}
       <style>{`
-        /* Bento Grid */
-        .bento-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:.7rem}
-        .bento-big{grid-column:span 2;grid-row:span 1}
-        .bento-tall{grid-row:span 2}
-        @media(max-width:1024px){.bento-grid{grid-template-columns:repeat(3,1fr);grid-auto-rows:200px}}
-        @media(max-width:768px){.bento-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px} .bento-big,.bento-tall{grid-column:span 1;grid-row:span 1}}
-        @media(max-width:480px){.bento-grid{grid-template-columns:1fr;grid-auto-rows:220px}}
+        /* Clean Uniform Grid */
+        .bento-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .g-item { aspect-ratio: 1 / 1; }
+        @media(max-width: 480px) { .bento-grid { grid-template-columns: 1fr; gap: 1rem; } }
 
         /* Gallery Item Hover */
         .g-item{will-change:transform}

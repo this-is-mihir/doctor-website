@@ -38,9 +38,12 @@ export const DOCTOR = {
 };
 
 export const TEAM = [
-  { name: "Dr. Priya Patel", degree: "BDS, MDS", role: "Dental Specialist", img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&crop=face" },
-  { name: "Dr. Amit Mehta", degree: "MBBS, MS", role: "Orthopedic Consultant", img: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&h=400&fit=crop&crop=face" },
-  { name: "Nurse Kavita Singh", degree: "B.Sc Nursing", role: "Head Nurse", img: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop&crop=face" },
+  { name: "Dr. Priya Patel", degree: "BDS, MDS", role: "Dental Specialist", img: "/images/doc2.png" },
+  { name: "Dr. Amit Mehta", degree: "MBBS, MS", role: "Orthopedic Consultant", img: "/images/doc1.png" },
+  { name: "Nurse Kavita Singh", degree: "B.Sc Nursing", role: "Head Nurse", img: "/images/doc4.png" },
+  { name: "Dr. Sameer Verma", degree: "MD, DM", role: "Neurologist", img: "/images/doc3.png" },
+  { name: "Dr. Ananya Sharma", degree: "MBBS, MD", role: "Pediatrician", img: "/images/doc6.png" },
+  { name: "Dr. Vikram Reddy", degree: "MD, FACC", role: "Cardiologist", img: "/images/doc5.png" },
 ];
 
 export const STATS = [

@@ -4,6 +4,10 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Award, ArrowRight, CheckCircle, Quote } from 'lucide-react';
 import { SITE, DOCTOR, TEAM } from '../config/site.config';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
@@ -37,7 +41,7 @@ export default function About() {
       <section style={{ padding: '4.5rem 0' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '3rem', alignItems: 'center' }}>
           <div className="reveal">
-            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&h=600&fit=crop&crop=face" alt={DOCTOR.name} style={{ borderRadius: 20, width: '100%', objectFit: 'cover', boxShadow: '0 16px 40px rgba(0,0,0,.08)' }} />
+            <img src="/images/doc3.png" alt={DOCTOR.name} style={{ borderRadius: 20, width: '100%', objectFit: 'cover', objectPosition: 'top center', boxShadow: '0 16px 40px rgba(0,0,0,.08)' }} />
           </div>
           <div className="reveal">
             <span className="section-badge"><Award size={13} /> Meet Our Doctor</span>
@@ -99,34 +103,68 @@ export default function About() {
             </div>
           </div>
           <div className="reveal">
-            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=550&h=420&fit=crop" alt="Clinic" style={{ borderRadius: 20, width: '100%', objectFit: 'cover', boxShadow: '0 16px 40px rgba(0,0,0,.08)' }} />
+            <img src="/images/doc5.png" alt="Clinic Team" style={{ borderRadius: 20, width: '100%', objectFit: 'cover', objectPosition: 'top center', boxShadow: '0 16px 40px rgba(0,0,0,.08)' }} />
           </div>
         </div>
         <style>{`@media(max-width:768px){section:nth-of-type(4) .container{grid-template-columns:1fr!important}}`}</style>
       </section>
 
       {/* Team */}
-      <section style={{ padding: '4rem 0', background: 'var(--color-g50)' }}>
+      <section style={{ padding: '6rem 0', background: 'var(--color-g50)' }}>
         <div className="container">
-          <div className="reveal" style={{ textAlign: 'center' }}>
-            <span className="section-badge">Our Team</span>
-            <h2 className="section-title">Meet Our Experts</h2>
-            <p className="section-sub">A dedicated team of healthcare professionals</p>
+          <div className="reveal" style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <span className="section-badge" style={{ background: '#fff', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>Our Team</span>
+            <h2 className="section-title" style={{ marginTop: '1rem', fontSize: 'clamp(2rem, 4vw, 2.8rem)' }}>Meet Our Experts</h2>
+            <p className="section-sub" style={{ marginTop: '0.5rem', fontSize: '1rem', color: 'var(--color-g500)' }}>A dedicated team of highly qualified healthcare professionals</p>
           </div>
-          <div className="stagger-p" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(250px,1fr))', gap: '1.5rem' }}>
-            {TEAM.map((m, i) => (
-              <div key={i} style={{ background: '#fff', borderRadius: 16, overflow: 'hidden', border: '1px solid var(--color-g200)', transition: 'all .3s' }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-5px)'; e.currentTarget.style.boxShadow = '0 15px 40px rgba(0,0,0,.06)'; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
-                <img src={m.img} alt={m.name} style={{ width: '100%', height: 240, objectFit: 'cover' }} />
-                <div style={{ padding: '1.2rem', textAlign: 'center' }}>
-                  <h3 style={{ fontSize: '1.05rem', marginBottom: '.2rem' }}>{m.name}</h3>
-                  <p style={{ color: 'var(--color-primary)', fontSize: '.82rem', fontWeight: 600 }}>{m.degree}</p>
-                  <p style={{ color: 'var(--color-g400)', fontSize: '.82rem' }}>{m.role}</p>
-                </div>
-              </div>
-            ))}
+          
+          <div className="reveal" style={{ paddingBottom: '3rem' }}>
+            <Swiper
+              modules={[Pagination, Autoplay]}
+              spaceBetween={30}
+              slidesPerView={1}
+              pagination={{ clickable: true }}
+              autoplay={{ delay: 3000, disableOnInteraction: false }}
+              breakpoints={{
+                576: { slidesPerView: 2 },
+                992: { slidesPerView: 3 },
+                1200: { slidesPerView: 4 }
+              }}
+              style={{ paddingBottom: '4rem' }}
+            >
+              {TEAM.map((m, i) => (
+                <SwiperSlide key={i}>
+                  <div className="team-card" style={{ background: '#fff', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.04)', transition: 'all 0.4s ease', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', display: 'flex', flexDirection: 'column' }}>
+                    
+                    {/* Robust Image Container - 1:1 Square Aspect Ratio */}
+                    <div style={{ width: '100%', aspectRatio: '1/1', overflow: 'hidden', position: 'relative', background: 'var(--color-g100)' }}>
+                      <img 
+                        src={m.img} 
+                        alt={m.name} 
+                        className="team-img" 
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)' }} 
+                      />
+                      {/* Subtle inner gradient to make the image pop */}
+                      <div style={{ position: 'absolute', inset: 0, border: '1px solid rgba(0,0,0,0.04)', borderRadius: '24px 24px 0 0', pointerEvents: 'none', zIndex: 1 }} />
+                    </div>
+                    
+                    {/* Content Box */}
+                    <div style={{ padding: '1.5rem', textAlign: 'center', background: '#fff', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                      <h3 style={{ fontSize: '1.2rem', fontFamily: 'var(--font-heading)', color: 'var(--color-dark)', marginBottom: '0.3rem' }}>{m.name}</h3>
+                      <p style={{ color: 'var(--color-primary)', fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.5px', marginBottom: '0.2rem' }}>{m.degree}</p>
+                      <p style={{ color: 'var(--color-g500)', fontSize: '0.85rem', margin: 0 }}>{m.role}</p>
+                    </div>
+                    
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
+
+          <style>{`
+            .team-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: rgba(8, 145, 178, 0.2); }
+            .team-card:hover .team-img { transform: scale(1.08); }
+          `}</style>
         </div>
       </section>
 

@@ -29,17 +29,25 @@ export default function Navbar() {
   return (
     <>
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-        <div className="container nav-inner">
-          <Link to="/" className="nav-logo">
-            {SITE.name.split(' ')[0]}<span> {SITE.name.split(' ').slice(1).join(' ')}</span>
-          </Link>
-          <div className="nav-links-desktop">
-            {NAV_LINKS.map(l => (
-              <Link key={l.path} to={l.path} className={`nav-link ${pathname === l.path ? 'active' : ''}`}>{l.label}</Link>
-            ))}
-            <Link to="/book-appointment" className="btn btn-primary" style={{ padding: '.55rem 1.2rem', fontSize: '.8rem' }}>Book Appointment</Link>
+        <div className="container">
+          <div className="nav-inner">
+            <div className="nav-logo-wrap">
+              <Link to="/" className="nav-logo">
+                {SITE.name.split(' ')[0]}<span> {SITE.name.split(' ').slice(1).join(' ')}</span>
+              </Link>
+            </div>
+            
+            <div className="nav-links-desktop">
+              {NAV_LINKS.map(l => (
+                <Link key={l.path} to={l.path} className={`nav-link ${pathname === l.path ? 'active' : ''}`}>{l.label}</Link>
+              ))}
+            </div>
+
+            <div className="nav-actions">
+              <Link to="/book-appointment" className="btn btn-primary btn-nav">Book Appointment</Link>
+              <button className={`mobile-toggle ${open ? 'active' : ''}`} onClick={toggle} aria-label="Menu"><span /><span /><span /></button>
+            </div>
           </div>
-          <button className={`mobile-toggle ${open ? 'active' : ''}`} onClick={toggle} aria-label="Menu"><span /><span /><span /></button>
         </div>
       </nav>
 
@@ -82,19 +90,11 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Contact + Social */}
+          {/* Contact */}
           <div className="mobile-menu-footer">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '.5rem' }}>
               <a href={`tel:${SITE.phone.replace(/\s/g, '')}`} className="mobile-footer-item"><Phone size={14} /><span>{SITE.phone}</span></a>
               <a href={`mailto:${SITE.email}`} className="mobile-footer-item"><Mail size={14} /><span>{SITE.email}</span></a>
-              <div className="mobile-footer-item" style={{ cursor: 'default' }}><MapPin size={14} /><span style={{ fontSize: '.75rem' }}>{SITE.address}</span></div>
-            </div>
-            <div style={{ display: 'flex', gap: '.5rem', marginTop: '.8rem' }}>
-              {[Globe, Camera, MessageCircle].map((Icon, i) => (
-                <a key={i} href="#" style={{ width: 34, height: 34, borderRadius: 8, background: 'var(--color-g100)', border: '1px solid var(--color-g200)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-g400)', transition: 'all .3s' }}>
-                  <Icon size={14} />
-                </a>
-              ))}
             </div>
           </div>
         </div>
